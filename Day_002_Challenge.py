@@ -1,14 +1,23 @@
-# Your life in days, weeks, months if you live to 90 years
+# Project: Tip Calculator
+import time
 
-# Get the users age
-age = input("What is your current age?\n")
-# Check input is valid
-if not age.isnumeric():
-    print("Enter a valid number from 0-90")
-elif int(age) > 90:
-    print("Enter a valid number from 0-90")
+print("Welcome to the tip calculator")
+time.sleep(0.5)
+print("What was the total bill?")
+total_bill = input("$")
+print("What percentage tip would you like to give?")
+percentage = input()
+print("How many people would be splitting the bill?")
+no_of_friends = input()
 
-age_difference = 90 - int(age)
-days, weeks, months = 365 * age_difference, 52 * age_difference, 12 * age_difference
+try:
+    total_bill = float(total_bill)
+    percentage = int(percentage)
+    no_of_friends = int(no_of_friends)
+except ValueError:
+    print("There's an error in the values entered")
 
-print(f"You have {days} days, {weeks} weeks and {months} months left.")
+new_total = ((percentage / 100) * total_bill) + total_bill
+amount_each = "{:.2f}".format(new_total / no_of_friends)
+
+print(f"Each person should pay $ {amount_each}")
