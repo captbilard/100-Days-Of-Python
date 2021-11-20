@@ -32,6 +32,10 @@ user_choice = int(
 )
 computer_choice = randint(0, 2)
 
+if user_choice > 2 or user_choice < 0:
+    print("You've chosen an invalid number, you lose")
+    quit()
+
 dict = {0: rock, 1: paper, 2: scissors}
 
 win_message = "You win"
@@ -42,8 +46,9 @@ print("Computer chose:\n")
 print(dict[computer_choice] + "\n")
 
 
+
 def check_game(val1, val2):
-    val1, val2 = dict[val1].lower(), dict[val2].lower()
+    val1, val2 = dict[val1], dict[val2]
     if val1 == rock and val2 == scissors:
         return True
     elif val1 == scissors and val2 == paper:
